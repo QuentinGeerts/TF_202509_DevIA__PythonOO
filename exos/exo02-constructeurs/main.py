@@ -23,15 +23,15 @@ print(proprietaire1)
 print(proprietaire2.__str__())
 
 # Création des voitures
-voiture1: Voiture = Voiture()
-voiture1.marque = "Kia"
-voiture1.modele = "Ceed"
-voiture1.proprietaire = proprietaire1
+voiture1: Voiture = Voiture("Kia", "Ceed", proprietaire1)
+# voiture1.marque = "Kia"
+# voiture1.modele = "Ceed"
+# voiture1.proprietaire = proprietaire1
 
-voiture2: Voiture = Voiture()
-voiture2.marque = "Volkswaggen"
-voiture2.modele = "Polo"
-voiture2.proprietaire = proprietaire2
+voiture2: Voiture = Voiture("Volkswaggen", "Polo", proprietaire2)
+# voiture2.marque = "Volkswaggen"
+# voiture2.modele = "Polo"
+# voiture2.proprietaire = proprietaire2
 
 print(voiture1)
 print(voiture2)

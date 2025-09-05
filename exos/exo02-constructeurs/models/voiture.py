@@ -1,4 +1,8 @@
-from .proprietaire import Proprietaire
+try:
+  from .proprietaire import Proprietaire
+except:
+  from proprietaire import Proprietaire
+  
 from datetime import date
 
 # Déclaration de la classe
@@ -8,6 +12,12 @@ class Voiture:
   marque: str
   modele: str
   proprietaire: Proprietaire
+  
+  # Constructeur
+  def __init__(self, marque: str = "", modele: str = "", proprietaire: Proprietaire = None):
+    self.marque = marque
+    self.modele = modele
+    self.proprietaire = proprietaire
   
   # Méthodes (comportements)
   def demarrer(self):
@@ -26,19 +36,21 @@ class Voiture:
 if __name__ == "__main__":
   # Déclaration de la variable "voiture_test"
   # Instanciation: Création de l'objet en mémoire
-  voiture_test: Voiture = Voiture()
-  voiture_test.marque = "Kia"
-  voiture_test.modele = "Ceed"
+  voiture_test: Voiture = Voiture("Kia", "Ceed", Proprietaire("Geerts", "Quentin", date(1996, 4, 3)))
+  # voiture_test.marque = "Kia"
+  # voiture_test.modele = "Ceed"
   
-  proprietaire_test: Proprietaire = Proprietaire()
-  proprietaire_test.nom = "Geerts"
-  proprietaire_test.prenom = "Quentin"
-  proprietaire_test.date_naissance = date(1996, 4, 3)
+  # proprietaire_test: Proprietaire = Proprietaire()
+  # proprietaire_test.nom = "Geerts"
+  # proprietaire_test.prenom = "Quentin"
+  # proprietaire_test.date_naissance = date(1996, 4, 3)
   
-  voiture_test.proprietaire = proprietaire_test
+  # voiture_test.proprietaire = Proprietaire("Geerts", "Quentin", date(1996, 4, 3))
   
   voiture_test.demarrer()
   voiture_test.rouler(50)
   voiture_test.arreter()
   
   print(f"Voiture: {voiture_test}")
+  print(f"Propriétaire: {voiture_test.proprietaire}")
+  print(f"Nom du Propriétaire: {voiture_test.proprietaire.nom}")
