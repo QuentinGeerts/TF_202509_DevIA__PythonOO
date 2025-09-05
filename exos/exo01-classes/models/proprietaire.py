@@ -7,7 +7,7 @@ class Proprietaire:
   
   # Redéfinition de méthodes (POO: Héritage)
   def __str__(self) -> str:
-    return f"{self.nom} {self.prenom} né le {self.date_naissance.strftime("%d/%m/%Y")}"
+    return f"{self.nom} {self.prenom} né le {self.date_naissance.strftime('%d/%m/%Y')}"
   
 if __name__ == "__main__":
   proprio: Proprietaire = Proprietaire()

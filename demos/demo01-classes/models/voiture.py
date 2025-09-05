@@ -14,7 +14,9 @@ class Voiture:
       
   def rouler(self, distance: float):
     print(f"La voiture roule {distance} km")
-  
+
+# -------------------------------------------------
+
 if __name__ == "__main__":
   # Déclaration de la variable "voiture_test"
   # Instanciation: Création de l'objet en mémoire
