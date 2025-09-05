@@ -17,17 +17,17 @@ class Voiture:
   #     Accessible UNIQUEMENT dans la classe
   
   # Attributs (caractéristiques)
-  marque: str
-  modele: str
-  proprietaire: Proprietaire
+  __marque: str
+  __modele: str
+  __proprietaire: Proprietaire
   __cheveaux: int
   __couleur: str
   __turbo: bool
   
   # Constructeur
   def __init__(self, marque: str = "", modele: str = "", proprietaire: Proprietaire = None, cheveaux: int = 70, couleur: str = "Noir"):
-    self.marque = marque
-    self.modele = modele
+    self.__marque = marque
+    self.__modele = modele
     self.proprietaire = proprietaire
     self.cheveaux = cheveaux
     self.__couleur = couleur
@@ -37,6 +37,24 @@ class Voiture:
   # Accesseurs et mutateurs (getters & setters)
   
   # Utilisation d'une annotation pour transformer la méthode en propriété
+  @property
+  def marque(self):
+    return self.__marque
+  
+  @property
+  def modele(self):
+    return self.__modele
+  
+  @property
+  def proprietaire(self):
+    return self.__proprietaire
+  
+  @proprietaire.setter
+  def proprietaire(self, value):
+    if value is not None and not isinstance(value, Proprietaire): 
+      raise ValueError("Le propriétaire doit être de la classe Propriétaire")
+    self.__proprietaire = value
+  
   @property
   def cheveaux (self):
     return self.__cheveaux
@@ -82,7 +100,9 @@ class Voiture:
 if __name__ == "__main__":
   # Déclaration de la variable "voiture_test"
   # Instanciation: Création de l'objet en mémoire
-  voiture_test: Voiture = Voiture("Kia", "Ceed", Proprietaire("Geerts", "Quentin", date(1996, 4, 3)))
+  # voiture_test: Voiture = Voiture("Kia", "Ceed", Proprietaire("Geerts", "Quentin", date(1996, 4, 3)))
+  # voiture_test: Voiture = Voiture("Kia", "Ceed")
+  # voiture_test: Voiture = Voiture("Kia", "Ceed", "Hello") # Ne fonctionne pas car n'est pas None ou Proprietaire
   # voiture_test.marque = "Kia"
   # voiture_test.modele = "Ceed"
   voiture_test.cheveaux = 110
